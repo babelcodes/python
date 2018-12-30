@@ -3,16 +3,43 @@ import unittest
 
 class TestList(unittest.TestCase):
 
+    def setUp(self):
+        self.numbers0to9 = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+
     def test_create(self):
         marks = [23, 56, 67]
         self.assertEqual(marks, [23, 56, 67])
 
-    def test_get(self):
+    def test_slicing__get(self):
+        """Lower bound included,  Upper bound is exluded."""
         animals = ['cat', 'dog', 'elephant']
         self.assertEqual(animals[0], 'cat')
         self.assertEqual(animals[2], 'elephant')
         with self.assertRaises(IndexError):
             animals[3]
+        self.assertEqual(self.numbers0to9[2], 'Two')
+        self.assertEqual(self.numbers0to9[2:6], ['Two', 'Three', 'Four', 'Five']) # Lower bound included,  Upper bound is exluded
+        self.assertEqual(self.numbers0to9[ :6], ['Zero', 'One', 'Two', 'Three', 'Four', 'Five'])
+        self.assertEqual(self.numbers0to9[3: ], ['Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'])
+        self.assertEqual(self.numbers0to9[1:8:2], ['One', 'Three', 'Five', 'Seven'])
+        self.assertEqual(self.numbers0to9[1:8:3], ['One', 'Four', 'Seven'])
+        self.assertEqual(self.numbers0to9[ : :3], ['Zero', 'Three', 'Six', 'Nine'])
+        self.assertEqual(self.numbers0to9[ : :-1], ['Nine', 'Eight', 'Seven', 'Six', 'Five', 'Four', 'Three', 'Two', 'One', 'Zero'])
+        self.assertEqual(self.numbers0to9[ : :-3], ['Nine', 'Six', 'Three', 'Zero'])
+
+    def test_slicing__delete(self):
+        """Lower bound included,  Upper bound is exluded."""
+        numbers = [] + self.numbers0to9
+        del numbers[3:]
+        self.assertEqual(numbers, ['Zero', 'One', 'Two'])
+        numbers = [] + self.numbers0to9
+        del numbers[5:7]
+        self.assertEqual(numbers, ['Zero', 'One', 'Two', 'Three', 'Four', 'Seven', 'Eight', 'Nine'])
+
+    def test_slicing__replace(self):
+        """Lower bound included,  Upper bound is exluded."""
+        self.numbers0to9[3:7] = [3, 4, 5, 6]
+        self.assertEqual(self.numbers0to9, ['Zero', 'One', 'Two', 3, 4, 5, 6, 'Seven', 'Eight', 'Nine'])
 
     def test_sum(self):
         self.assertEqual(sum([23, 56, 67]), 146)
@@ -79,6 +106,13 @@ class TestList(unittest.TestCase):
 
     def test_len(self):
         self.assertEqual(len(['cat', 'dog', 'elephant']), 3)
+        self.assertEqual(len(self.numbers0to9), 10)
+
+    def test_len(self):
+        self.assertEqual(len(['cat', 'dog', 'elephant']), 3)
+
+    def test_reverse(self):
+        self.assertEqual(self.numbers0to9[ : :-1], ['Nine', 'Eight', 'Seven', 'Six', 'Five', 'Four', 'Three', 'Two', 'One', 'Zero'])
 
 
 if __name__ == '__main__':
