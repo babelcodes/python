@@ -15,6 +15,13 @@ cd cod/
 python -m unittest discover
 ```
 
+As continuous ruunning:
+
+```
+npm install -g nodemon
+nodemon --ext py --exec "python -m unittest discover"
+```
+
 ## Setup on Mac OS X Mojave
 
 - Install [PyEnv](https://github.com/pyenv/pyenv) to handle multiple versions of Python:

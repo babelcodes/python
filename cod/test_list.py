@@ -190,6 +190,14 @@ class TestList(unittest.TestCase):
         self.assertEqual(numbers.pop(0), 3)
         self.assertEqual(numbers, [4, 33])
 
+    def test_list_comprehension(self):
+        numbers = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five']
+        self.assertEqual([len(number) for number in numbers], [4, 3, 3, 5, 4, 4])
+        self.assertEqual([number.upper() for number in numbers], ['ZERO', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'])
+        self.assertEqual([ number for number in numbers if len(number)==4 ], ['Zero', 'Four', 'Five'])
+        values = [3, 6, 9, 1, 4, 15, 6, 3]
+        self.assertEqual([ value for value in values if value%2==1 ], [3, 9, 1, 15, 3])
+
 
 if __name__ == '__main__':
     unittest.main()
