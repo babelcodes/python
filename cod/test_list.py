@@ -158,6 +158,38 @@ class TestList(unittest.TestCase):
             result += n + ' '
         self.assertEqual(result, 'Three Seven Eight Zero Four Five Nine One Two Six ')
 
+    def test_stack_filo(self):
+        numbers = []
+        numbers.append(1)
+        numbers.append(2)
+        numbers.append(3)
+        numbers.append(4)
+        self.assertEqual(numbers, [1, 2, 3, 4])
+        self.assertEqual(numbers.pop(), 4)
+        self.assertEqual(numbers, [1, 2, 3])
+        self.assertEqual(numbers.pop(), 3)
+        self.assertEqual(numbers, [1, 2])
+        numbers.append(33)
+        self.assertEqual(numbers, [1, 2, 33])
+        self.assertEqual(numbers.pop(), 33)
+        self.assertEqual(numbers, [1, 2])
+
+    def test_queue_fifo(self):
+        numbers = []
+        numbers.append(1)
+        numbers.append(2)
+        numbers.append(3)
+        numbers.append(4)
+        self.assertEqual(numbers, [1, 2, 3, 4])
+        self.assertEqual(numbers.pop(0), 1)
+        self.assertEqual(numbers, [2, 3, 4])
+        self.assertEqual(numbers.pop(0), 2)
+        self.assertEqual(numbers, [3, 4])
+        numbers.append(33)
+        self.assertEqual(numbers, [3, 4, 33])
+        self.assertEqual(numbers.pop(0), 3)
+        self.assertEqual(numbers, [4, 33])
+
 
 if __name__ == '__main__':
     unittest.main()
