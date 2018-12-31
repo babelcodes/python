@@ -4,6 +4,7 @@ import unittest
 class TestList(unittest.TestCase):
 
     def setUp(self):
+        self.numbers0to5 = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five']
         self.numbers0to9 = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
 
     def test_create(self):
@@ -11,7 +12,7 @@ class TestList(unittest.TestCase):
         self.assertEqual(marks, [23, 56, 67])
 
     def test_slicing__get(self):
-        """Lower bound included,  Upper bound is exluded."""
+        """Lower bound is included, Upper bound is exluded."""
         animals = ['cat', 'dog', 'elephant']
         self.assertEqual(animals[0], 'cat')
         self.assertEqual(animals[2], 'elephant')
@@ -28,7 +29,7 @@ class TestList(unittest.TestCase):
         self.assertEqual(self.numbers0to9[ : :-3], ['Nine', 'Six', 'Three', 'Zero'])
 
     def test_slicing__delete(self):
-        """Lower bound included,  Upper bound is exluded."""
+        """Lower bound is included, Upper bound is exluded."""
         numbers = [] + self.numbers0to9
         del numbers[3:]
         self.assertEqual(numbers, ['Zero', 'One', 'Two'])
@@ -37,7 +38,7 @@ class TestList(unittest.TestCase):
         self.assertEqual(numbers, ['Zero', 'One', 'Two', 'Three', 'Four', 'Seven', 'Eight', 'Nine'])
 
     def test_slicing__replace(self):
-        """Lower bound included,  Upper bound is exluded."""
+        """Lower bound is included, Upper bound is exluded."""
         self.numbers0to9[3:7] = [3, 4, 5, 6]
         self.assertEqual(self.numbers0to9, ['Zero', 'One', 'Two', 3, 4, 5, 6, 'Seven', 'Eight', 'Nine'])
 
@@ -112,7 +113,50 @@ class TestList(unittest.TestCase):
         self.assertEqual(len(['cat', 'dog', 'elephant']), 3)
 
     def test_reverse(self):
-        self.assertEqual(self.numbers0to9[ : :-1], ['Nine', 'Eight', 'Seven', 'Six', 'Five', 'Four', 'Three', 'Two', 'One', 'Zero'])
+        # array not modified, new array
+        numbers = [] + self.numbers0to5
+        self.assertEqual(numbers[ : :-1], ['Five', 'Four', 'Three', 'Two', 'One', 'Zero'])
+        # array modified
+        numbers = [] + self.numbers0to5
+        self.assertEqual(numbers.reverse(), None)
+        self.assertEqual(numbers, ['Five', 'Four', 'Three', 'Two', 'One', 'Zero'])
+        # array not modified, new iterator
+        numbers = [] + self.numbers0to5
+        result = ''
+        for n in reversed(numbers):
+            result += n
+        self.assertEqual(result, 'FiveFourThreeTwoOneZero')
+
+    def test_sort(self):
+        # array modified
+        numbers = [] + self.numbers0to9
+        self.assertEqual(numbers.sort(), None)
+        self.assertEqual(numbers, ['Eight', 'Five', 'Four', 'Nine', 'One', 'Seven', 'Six', 'Three', 'Two', 'Zero'])
+        # array modified, with key
+        numbers = [] + self.numbers0to9
+        self.assertEqual(numbers.sort(key=len), None)
+        self.assertEqual(numbers, ['One', 'Two', 'Six', 'Zero', 'Four', 'Five', 'Nine', 'Three', 'Seven', 'Eight'])
+        # array modified, with key and reverse
+        numbers = [] + self.numbers0to9
+        self.assertEqual(numbers.sort(key=len, reverse=True), None)
+        self.assertEqual(numbers, ['Three', 'Seven', 'Eight', 'Zero', 'Four', 'Five', 'Nine', 'One', 'Two', 'Six'])
+        # array not modified, new iterator
+        numbers = [] + self.numbers0to9
+        result = ''
+        for n in sorted(numbers):
+            result += n + ' '
+        self.assertEqual(result, 'Eight Five Four Nine One Seven Six Three Two Zero ')
+        # array not modified, new iterator with key
+        numbers = [] + self.numbers0to9
+        result = ''
+        for n in sorted(numbers, key=len):
+            result += n + ' '
+        self.assertEqual(result, 'One Two Six Zero Four Five Nine Three Seven Eight ')
+        # array not modified, new iterator with key and reverse
+        result = ''
+        for n in sorted(([] + self.numbers0to9), key=len, reverse=True):
+            result += n + ' '
+        self.assertEqual(result, 'Three Seven Eight Zero Four Five Nine One Two Six ')
 
 
 if __name__ == '__main__':
