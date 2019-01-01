@@ -3,6 +3,22 @@
 Learn/ing [Python](https://www.python.org)
 
 
+## Machine Learning
+
+The main motivation to (re)learn Python now (according to other important topics I have to learn to
+ too) is the fact that it is widely used for Machine Learning (that I am learning too).
+ 
+I think one of the reasons for that, one of the strength of Python is the collections: see below. 
+
+
+## Table of content
+
+- [Setup](./doc/setup.md)
+- Collections:
+  - [List](./cod/test_collection_1_list.py) and [Lists with OOP](./cod/test_collection_2_list_oop.py)
+  - [Set](./cod/test_collection_3_set.py)
+
+
 ## Unit tests as documentation
 
 > I decided to provide tutorial of the language as unit tests that can be executed. 
@@ -25,11 +41,4 @@ As continuous running:
 npm install -g nodemon
 nodemon --ext py --exec "python -m unittest discover"
 ```
-
-## Table of content
-
-- [Setup](./doc/setup.md)
-- Collections:
-  - [List](./cod/test_collection_1_list.py) and [Lists with OOP](./cod/test_collection_2_list_oop.py)
-  - [Set](./cod/test_collection_3_set.py)
 
