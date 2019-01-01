@@ -17,6 +17,8 @@ I think one of the reasons for that, one of the strength of Python is the collec
 - Collections:
   - [List](./cod/test_collection_1_list.py) and [Lists with OOP](./cod/test_collection_2_list_oop.py)
   - [Set](./cod/test_collection_3_set.py)
+  - [Dictionary](./cod/test_collection_4_dict.py)
+  - [Tuple](./cod/test_collection_5_tuple.py)
 
 
 ## Unit tests as documentation

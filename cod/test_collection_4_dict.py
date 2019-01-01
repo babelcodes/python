@@ -5,7 +5,6 @@ class TestDict(unittest.TestCase):
     """A dictionary (or hashmap) is a class for key / value representation"""
 
     def setUp(self):
-        pass
         self.occurances = dict(a=5, b=6, c=8)
 
     def test_create(self):
