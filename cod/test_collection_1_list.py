@@ -11,6 +11,14 @@ class TestList(unittest.TestCase):
         marks = [23, 56, 67]
         self.assertEqual(marks, [23, 56, 67])
 
+    def test_create_with_range(self):
+        numbers = range(1, 6)
+        self.assertEqual(numbers, [1, 2, 3, 4, 5])
+
+    def test_type(self):
+        self.assertEqual(type([1, 2, 3]),  list)
+        self.assertTrue(type([1, 2, 3]) is list)
+
     def test_slicing__get(self):
         """Lower bound is included, Upper bound is exluded."""
         animals = ['cat', 'dog', 'elephant']
@@ -108,9 +116,6 @@ class TestList(unittest.TestCase):
     def test_len(self):
         self.assertEqual(len(['cat', 'dog', 'elephant']), 3)
         self.assertEqual(len(self.numbers0to9), 10)
-
-    def test_len(self):
-        self.assertEqual(len(['cat', 'dog', 'elephant']), 3)
 
     def test_reverse(self):
         # array not modified, new array
