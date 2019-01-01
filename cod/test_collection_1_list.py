@@ -15,6 +15,10 @@ class TestList(unittest.TestCase):
         numbers = range(1, 6)
         self.assertEqual(numbers, [1, 2, 3, 4, 5])
 
+    def test_create_with_function(self):
+        squares = [ i*i for i in range(1, 6) ]
+        self.assertEqual(squares, [1, 4, 9, 16, 25])
+
     def test_type(self):
         self.assertEqual(type([1, 2, 3]),  list)
         self.assertTrue(type([1, 2, 3]) is list)

@@ -19,14 +19,21 @@ class TestSet(unittest.TestCase):
         numbers_set = {1, 2, 3}
         self.assertEqual(numbers_set, {1, 2, 3})
         #
-        numbers_set = {}
-        self.assertTrue(type(numbers_set) is dict)
+        empty_set_i_guess = {}
+        self.assertTrue(type(empty_set_i_guess) is dict)
         with self.assertRaises(AttributeError):
-            numbers_set.add(2)
+            empty_set_i_guess.add(2)
+        #
+        empty_set = set()
+        self.assertEqual(len(empty_set), 0)
 
     def test_create_with_range(self):
         numbers = set(range(1, 6))
         self.assertEqual(numbers, {1, 2, 3, 4, 5})
+
+    def test_create_with_function(self):
+        self.assertEqual(set([ i*i for i in range(1, 6) ]), {1, 4, 9, 16, 25})
+        self.assertEqual({ i*i for i in range(1, 6) }, {1, 4, 9, 16, 25})
 
     def test_type(self):
         self.assertEqual(type({1, 2, 3}),  set)

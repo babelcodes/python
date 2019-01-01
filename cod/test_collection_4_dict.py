@@ -11,6 +11,9 @@ class TestDict(unittest.TestCase):
     def test_create(self):
         self.assertEqual(self.occurances, dict(a=5, b=6, c=8))
 
+    def test_create_with_function(self):
+        self.assertEqual({ i:i*i for i in range(1, 6) }, {1:1, 2:4, 3:9, 4:16, 5:25})
+
     def test_type(self):
         self.assertEqual(type(self.occurances), dict)
         self.assertTrue(type(self.occurances) is dict)
