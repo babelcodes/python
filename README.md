@@ -5,8 +5,7 @@ Learn/ing [Python](https://www.python.org)
 
 ## Machine Learning
 
-The main motivation to (re)learn Python now (according to other important topics I have to learn to
- too) is the fact that it is widely used for Machine Learning (that I am learning too).
+The main motivation to (re)learn Python now is the fact that it is widely used for Machine Learning.
  
 I think one of the reasons for that, one of the strength of Python is the collections: see below. 
 
